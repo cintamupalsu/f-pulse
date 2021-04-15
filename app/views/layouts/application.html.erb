@@ -1,33 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>F-Pulse</title>
+    <title><%= full_title(yield(:title)) %></title>
+    <link rel="icon" type="image/png" href="/assets/stockslogo/kalpataru.png">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+    
+    <!--
     <style>
         .flash-warning   { color: red; }
         .flash-notice  { color: blue; }
         .flash-success { color: green; }
     </style>
+    -->
   </head>
 
   <body>
-  <header class="navbar navbar-default navbar-fixed-top shadow pt-1 rounded">
-      <div class="container">
-      </div>
-  </header>
-    <% if flash.any? %>
-      <% flash.each do |key, value| -%>
-        <% if key == "alert"%>
-          <% key = "warning" %>
-        <% end %>
-        <section class="alert alert-<%= key %>"><%= value.html_safe %></section>
-      <% end -%>
-    <% end %>
-    <%= yield %>
+
+    <%= render 'layouts/header' %>
+    <div class='container'>
+      <% if flash.any? %>
+        <% flash.each do |key, value| -%>
+          <% if key == "alert"%>
+            <% key = "warning" %>
+          <% end %>
+          <section class="alert alert-<%= key %>"><%= value.html_safe %></section>
+        <% end -%>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

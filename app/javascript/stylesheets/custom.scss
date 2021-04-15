@@ -1,1 +1,26 @@
 @import '~bootstrap/scss/bootstrap';
+header {
+    font-family: "HGP行書体";
+    margin-bottom: 10px;
+    #application_title{
+      font-size: 21px;
+      letter-spacing: -2px;
+      margin-top: 5;
+    }
+    #kalpataru{
+      float: left;
+      margin-top: -5px;
+      margin-bottom: -20px;
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    #nav-item{
+      padding-right: 10px;
+    }
+  }
+  .carousel .caroulel-item{
+      height: 500px;
+  }
+  .carousel-item img{
+     height: 500px;
+  }
