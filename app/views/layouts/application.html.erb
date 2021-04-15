@@ -6,19 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <style>
-        .flash__alert   { color: red; }
-        .flash__notice  { color: blue; }
-        .flash__success { color: green; }
+        .flash-warning   { color: red; }
+        .flash-notice  { color: blue; }
+        .flash-success { color: green; }
     </style>
   </head>
 
   <body>
+  <header class="navbar navbar-default navbar-fixed-top shadow pt-1 rounded">
+      <div class="container">
+      </div>
+  </header>
     <% if flash.any? %>
       <% flash.each do |key, value| -%>
-        <section class="flash flash__<%= key %>"><%= value.html_safe %></section>
+        <% if key == "alert"%>
+          <% key = "warning" %>
+        <% end %>
+        <section class="alert alert-<%= key %>"><%= value.html_safe %></section>
       <% end -%>
     <% end %>
     <%= yield %>
