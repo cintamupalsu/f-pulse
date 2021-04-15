@@ -29,7 +29,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'omniauth', '~> 1.9.1'
-gem  'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2'
+gem 'bootstrap'
+# dont forget to set config/webpack/environment
+# then run on terminal: yarn add jquery bootstrap popper.js
+# change the layout html to stylesheet_pack_tag
+# set javascript/packs/application.js to add: 
+#     require('jquery')
+#     import 'bootstrap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
