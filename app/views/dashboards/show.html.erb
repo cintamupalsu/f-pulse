@@ -1,3 +1,11 @@
 <% provide(:title, "🛖Home") %>
-<h1>You're logged in! Welcome to the F-Pulse Dashboard!</h1>
-<%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-secondary" %>
+<div class="row">
+    <aside class="col-3">
+        <section class="user_info">
+            <h1>
+                <%= image_tag(@user.avatar_url, alt: @user.full_name, class: "gravatar", size: "80x80") %>
+                <%= @user.full_name %>
+            </h1>
+        </section>
+    </aside>
+</div>

@@ -1,51 +1,98 @@
 @import '~bootstrap/scss/bootstrap';
 header {
-    font-family: "HGP行書体";
-    margin-bottom: 10px;
-    #application_title{
-      font-size: 21px;
-      letter-spacing: -2px;
-      margin-top: 5;
-    }
-    #kalpataru{
-      float: left;
-      margin-top: -5px;
-      margin-bottom: -20px;
-      margin-right: 10px;
-      margin-left: 10px;
-    }
-    #nav-item{
-      padding-right: 10px;
-    }
+  font-family: "HGP行書体";
+  margin-bottom: 10px;
+  #application_title{
+    font-size: 21px;
+    letter-spacing: -2px;
+    margin-top: 5;
   }
-  .carousel .caroulel-item{
-      height: 500px;
-  }
-  .carousel-item img{
-     height: 500px;
-  }
-
-  footer{
-    margin-left: 10px;
+  #kalpataru{
+    float: left;
+    margin-top: -5px;
+    margin-bottom: -20px;
     margin-right: 10px;
-    margin-top: 10px;
-    border-top: 1px solid $black;
-    small{
-      float: left;
-      margin-left: 10px;
-      margin-top: 5px;
-      #sbs_logo{
-        margin-top: -5px;
-        margin-left: 5px;
-      }
-    }
-    ul{
-       float: right;
-       list-style: none;
-       margin-right: 20px;
-       li{
-          float: left;
-          margin-left: 15px;
-       }
+    margin-left: 10px;
+  }
+  #nav-item{
+    padding-right: 10px;
+  }
+}
+
+.carousel .caroulel-item{
+    height: 500px;
+}
+.carousel-item img{
+    height: 500px;
+}
+
+footer{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-top: 1px solid $black;
+  small{
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+    #sbs_logo{
+      margin-top: -5px;
+      margin-left: 5px;
     }
   }
+  ul{
+      float: right;
+      list-style: none;
+      margin-right: 20px;
+      li{
+        float: left;
+        margin-left: 15px;
+      }
+  }
+}
+
+/* sidebar */
+aside{
+  section.user_info{
+    margin-top: 20px;
+  }
+  section{
+    padding: 10px, 0;
+    margin-top: 20px;
+    &:first-child{
+      border: 0;
+      padding-top: 0;
+    }
+    span{
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1{
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+.gravatar{
+  float: left;
+  margin-right: 10px;
+}
+  
+/* forms */
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  .form-control {
+    color: red;
+  }
+}
