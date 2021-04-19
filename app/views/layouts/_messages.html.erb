@@ -1,0 +1,11 @@
+<% if flash.any? %>
+    <% flash.each do |key, value| -%>
+        <% if key == "alert"%>
+            <% key = "warning" %>
+        <% end %>
+        <% if key == "notice" %>
+            <% key = "info" %>
+        <% end %>
+        <section class="alert alert-<%= key %>"><%= value.html_safe %></section>
+    <% end -%>
+<% end %>

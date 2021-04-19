@@ -27,14 +27,7 @@
 
     <%= render 'layouts/header' %>
     <div class='container'>
-      <% if flash.any? %>
-        <% flash.each do |key, value| -%>
-          <% if key == "alert"%>
-            <% key = "warning" %>
-          <% end %>
-          <section class="alert alert-<%= key %>"><%= value.html_safe %></section>
-        <% end -%>
-      <% end %>
+      <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
