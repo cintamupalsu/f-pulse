@@ -38,5 +38,8 @@
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
+    <div class='container'>
+      <%= debug(params) if Rails.env.develompent? %>
+    </div>
   </body>
 </html>
