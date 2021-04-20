@@ -5,14 +5,15 @@
         <div class="carousel-item active">
             <%= image_tag 'photos/ricepaddy.png', class: 'd-block w-100' %>
             <div class="carousel-caption d-none d-md-block">
-                <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
+                  <%= render 'layouts/messages' %>
                 <h2>You're Logged out! Log in to the F-Pulse Dashboard</h2>
+                  
             </div>
         </div>
         <div class="carousel-item">
             <%= image_tag 'photos/teaplant.png', class: 'd-block w-100' %>
             <div class="carousel-caption d-none d-md-block">
-                <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
+                  <%= render 'layouts/messages' %>
                 <h2>You're Logged out! Log in to the F-Pulse Dashboard</h2>
             </div>
         </div>

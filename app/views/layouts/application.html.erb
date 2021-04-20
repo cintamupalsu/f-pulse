@@ -27,7 +27,9 @@
 
     <%= render 'layouts/header' %>
     <div class='container'>
-      <%= render 'layouts/messages' %>
+      <% if user_signed_in? %>
+        <%= render 'layouts/messages' %>
+      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
