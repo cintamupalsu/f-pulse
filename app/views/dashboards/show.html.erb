@@ -1,17 +1,48 @@
 <% provide(:title, "🛖Home") %>
 <div class="row">
-    <aside class="col-3">
-        <section class="user_info">
-            <h1>
-                <%= image_tag(@user.avatar_url, alt: @user.full_name, class: "gravatar", size: "80x80") %>
-                <%= @user.full_name %>
-            </h1>
-        </section>
-    </aside>
-    <div class="col-3">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-3 pr-0">
+        <div class="card">
+            <div class="card-header">
+                👨🏻‍🌾 演能ボランティア
+            </div>
+            <div class="card-body">
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 pr-0">
+        <div class="card">
+            <div class="card-header">
+                🍱 無人販売
+            </div>
+            <div class="card-body">
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
     </div>
-    <div class="col-3">
+    <div class="col-3 pr-0">
+        <div class="card">
+            <div class="card-header">
+                📟 農家IoT
+            </div>
+            <div class="card-body">
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+    <div class="col-1 pr-0">
+        <div class="card">
+            free space
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
     </div>
 </div>
