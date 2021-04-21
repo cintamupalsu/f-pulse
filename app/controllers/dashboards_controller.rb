@@ -1,9 +1,9 @@
 class DashboardsController < ApplicationController
-  #before_action :authenticate_user!  
+  before_action :authenticate_user!  
   
   def show
     @user = current_user
-    @user = User.first
+    #@user = User.first
   end
 
 end
