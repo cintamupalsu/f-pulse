@@ -1,12 +1,22 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+
+
 <% provide(:title, "🛖Home") %>
+<div class="dashboard">
 <div class="row">
     <%= render 'layouts/sidemenu' %>
     <div class="col-3 pr-0">
         <div class="card mb-1">
             <div class="card-header">
-                👨🏻‍🌾 演能ボランティア
+                👨🏻‍🌾 援農ボランティア
             </div>
             <div class="card-body">
+                <div id="container_ennou"></div>
             </div>
             <div class="card-footer">
                 <%= link_to "Enter", "#", class: "btn btn-success btn-block btn-sm" %>
@@ -19,6 +29,16 @@
                 🍱 無人販売
             </div>
             <div class="card-body">
+                <ul>
+                    <li>みかん販売中</li>
+                    <li>トマト販売中</li>
+                    <li>いちご販売中</li>
+                    <li>いちご販売中</li>
+                    <li>いちご販売中</li>
+                    <li>いちご販売中</li>
+                    <li>いちご販売中</li>
+                    <li>いちご販売中</li>
+                </ul>
             </div>
             <div class="card-footer">
                 <%= link_to "Enter", "#", class: "btn btn-success btn-block btn-sm" %>
@@ -31,6 +51,14 @@
                 📟 農家IoT
             </div>
             <div class="card-body">
+                <ul>
+                    <li>UV:　12有効　3無効</li>
+                    <li>温度:　12有効　3無効</li>
+                    <li>ライト:　12有効　3無効</li>
+                    <li>LoRa:　12有効　3無効</li>
+                    <li>ウルトラ:　12有効　3無効</li>
+                    <li>水:　12有効　3無効</li>
+                </ul>
             </div>
             <div class="card-footer">
                 <%= link_to "Enter", "#", class: "btn btn-success btn-block btn-sm" %>
@@ -49,3 +77,105 @@
         </div>
     </div>
 </div>
+</div>
+<script>
+Highcharts.chart('container_ennou', {
+    chart: {
+        type: 'gauge',
+        plotBorderWidth: 1,
+        plotBackgroundColor: {
+            linearGradient: { x1: 0, y1: 0},
+            stops: [
+                [0, '#FFF4C6'],
+                [0.3, '#FFFFFF'],
+                [1, '#FFF4C6']
+            ]
+        },
+        plotBackgroundImage: null,
+        height: 200
+    },
+
+    title: {
+        text: 'ﾎﾞﾗﾝﾃｨｱ必要人数'
+    },
+
+    pane: [{
+        startAngle: -38,
+        endAngle: 38,
+        background: null,
+        center: ['50%', '145%'],
+        size: 300
+    }],
+
+    exporting: {
+        enabled: false
+    },
+
+    tooltip: {
+        enabled: false
+    },
+
+    yAxis: [{
+        min: -10,
+        max: 30,
+        minorTickPosition: 'outside',
+        tickPosition: 'outside',
+        labels: {
+            rotation: 'auto',
+            distance: 20
+        },
+        plotBands: [{
+            from: 20,
+            to: 30,
+            color: '#C02316',
+            innerRadius: '100%',
+            outerRadius: '105%'
+        }],
+        pane: 0,
+        title: {
+            text: '人<br/><span style="font-size:8px">不足</span>',
+            y: -40
+        }
+    }],
+
+    plotOptions: {
+        gauge: {
+            dataLabels: {
+                enabled: false
+            },
+            dial: {
+                radius: '100%'
+            }
+        }
+    },
+
+    series: [{
+        name: 'Channel A',
+        data: [15],
+        yAxis: 0
+    }]
+
+},
+
+// Let the music play
+function (chart) {
+    setInterval(function () {
+        if (chart.series) { // the chart may be destroyed
+            var left = chart.series[0].points[0],
+                leftVal,
+                inc = (Math.random() - 0.5) * 3;
+
+            leftVal = left.y + inc;
+            if (leftVal < -20 || leftVal > 6) {
+                leftVal = left.y - inc;
+            }
+            
+
+            left.update(leftVal, false);
+            chart.redraw();
+        }
+    }, 500);
+
+});
+
+</script>
