@@ -1,0 +1,29 @@
+<% provide(:title, "🍱無人販売") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-4 pr-0">
+        <div class="card">
+            <div class="card-header">
+                🌏 地図
+            </div>
+            <div class="card-body">
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
+    </div>
+    <div class="col-4 pr-0">
+        <div class="card">
+            <div class="card-header">
+                🗄 営業
+            </div>
+            <div class="card-body">
+             
+            </div>
+            <div class="card-footer">
+                <%= link_to "Enter", mujin_management_path, class: "btn btn-success btn-block" %>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   #devise :database_authenticatable, :registerable,
   #       :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
+  has_many :mujins
 
   def self.from_google(email:, full_name:, uid:, avatar_url:)
     #return nil unless email =~ /@sbs-infosys.co.jp\z/

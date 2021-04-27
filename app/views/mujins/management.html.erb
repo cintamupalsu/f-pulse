@@ -1,0 +1,64 @@
+<% provide(:title, "無人販売営業") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-9 pr-0">
+        <table class="table table-sm table-hover">
+            <thead class="table-success">
+                <th scope="col">№</th>
+                <th scope="col">無人名</th>
+                <th scope="col">地図</th>
+                <th scope="col">在庫</th>
+            </thead>
+            <tbody>
+                <% counter = 0 %>
+                <% @mujins.each do |mujin| %>
+                    <% counter += 1%>
+                    <tr>
+                        <td><%= counter%></td>
+                        <td>
+                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#<%=mujin.name%><%=mujin.id%>">
+                                <%= mujin.name%>
+                            </button>
+                        </td>
+                        <td>地図</td>
+                        <td>2</td>
+                    </tr>
+                    <div class="modal fade" id="<%=mujin.name%><%=mujin.id%>" tabindex="-1" role="dialog" aria-labelledby="mujinModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><%= mujin.name %></h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <div class="row border-bottom">
+                                            <div class="col-1">№</div>
+                                            <div class="col-5 text-center">売り物</div>
+                                            <div class="col-3 text-center">値段</div>
+                                            <div class="col-3 text-center">個</div>
+                                        </div>
+                                        <div class="row">
+                                            <% counter2 = 0%>
+                                            <% mujin.mujin_items.each do |item| %>
+                                                <% counter2 += 1%>
+                                                    <div class="col-1"><%=counter2%></div>
+                                                    <div class="col-5 text-left"><%= item.name %></div>
+                                                    <div class="col-3 text-right"><%= item.price %></div>
+                                                    <div class="col-3 text-right"><%= item.stock %></div>
+                                            <% end %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
