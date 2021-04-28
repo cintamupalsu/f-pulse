@@ -10,8 +10,6 @@ class DashboardsController < ApplicationController
   def qr_show
     # current_user = User.first # remark
     content = "EIEIO"+current_user.id.to_s
-    size = '3'
-    level = :h 
     @qrcode = RQRCode::QRCode.new(content, :size => 5, :level => :h)
   end
 
