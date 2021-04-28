@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get 'users/sign_out', to: 'users/sessions#destroy', as: :destroy_user_session
   end
 
+  # credential routes
+  get 'showqrcode', to: 'dashboards#qr_show'
+
   # Mujin routes
   get '/mujin_dashboard',  to: 'mujins#show'
   get '/mujin_management', to: 'mujins#management'

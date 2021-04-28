@@ -16,16 +16,16 @@
                             <%=current_user.full_name%><b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><%= link_to "Setting", "#", class: "nav-link" %></li>
+                            <li><%= link_to "⚙️ Setting", "#", class: "nav-link" %></li>
                             <li class="dropdown-divider"></li>
-                            <li><%= link_to "Sign Out", destroy_user_session_path, class: "nav-link" %></li>
+                            <li><%= link_to "⎋ Sign Out", destroy_user_session_path, class: "nav-link" %></li>
                         </ul>
                     </li>
                     <a class="navbar-brand" href="#" id="user-identity">
                         <%= image_tag(current_user.avatar_url, alt: current_user.full_name, class: "rounded-circle", size: "40x40", id:"user-image") %>
                     </a>
                 <% else %>
-                    <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
+                    <%= link_to "📝 Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-primary" %>
                 <% end %>
             </ul>
         </nav>

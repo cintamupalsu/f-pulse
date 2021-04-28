@@ -37,6 +37,9 @@ gem 'bootstrap'
 # set javascript/packs/application.js to add: 
 #     require('jquery')
 #     import 'bootstrap'
+gem 'rqrcode'
+gem 'rqrcode_png'
+gem 'chunky_png'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
