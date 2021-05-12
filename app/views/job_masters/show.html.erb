@@ -1,0 +1,8 @@
+<% provide(:title, "🗂作業内容マスター") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-3 pr-0">
+        <%= @job_master.content %>,<%= @job_master.order %>
+    </div>
+</div>

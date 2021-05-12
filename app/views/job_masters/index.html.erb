@@ -1,0 +1,44 @@
+<% provide(:title, "🗂作業内容") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10 pr-0">
+        <% if @job_masters.any? %>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">№</th>
+                        <th scope="col">作業内容</th>
+                        <th scope="col">順番</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% counter = 10 * (@page.to_i - 1)%>
+                    <% if counter < 0 %>
+                        <% counter = 0 %>
+                    <% end %>
+                    <% @job_masters.each do |job_master|%>
+                        <% counter = counter + 1%>
+                        <tr class="mt-0 mb-0 pt-0 pb-0">
+                            <td class="text-center"><%= counter %></td>
+                            <td><%= job_master.content %></td>
+                            <td><%= job_master.order %></td>
+                            <td class="text-center">
+                                <a href=<%= edit_job_master_path(job_master) %> class="btn btn-outline-success btn-sm">編集</a>
+                                <%= link_to "削除", job_master, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                    <tr>
+                        <td class="text-center"><a href=<%= new_job_master_path %> class="btn btn-outline-info btn-sm">追加</a></td>
+                        <td colspan="3"><%= will_paginate( @job_masters, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer ) %></td>
+                     
+                    </tr>
+                </tbody>
+            </table>
+            
+        <% end %>
+    </div>
+</div>

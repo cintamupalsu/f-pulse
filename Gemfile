@@ -37,6 +37,8 @@ gem 'bootstrap'
 # set javascript/packs/application.js to add: 
 #     require('jquery')
 #     import 'bootstrap'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'chunky_png'

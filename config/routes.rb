@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'dashboards#show'
+  get '/master_maintenance', to: 'dashboards#masters_maintenance'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do
@@ -19,5 +20,8 @@ Rails.application.routes.draw do
  
 
   # Farm volunteer routes
+
+  # Job routes
+  resources :job_masters
 
 end
