@@ -3,18 +3,19 @@
 <div class="row">
     <%= render 'layouts/sidemenu' %>
     <div class="col-10 pr-0">
-        <% if @job_masters.any? %>
+        
             
-            <table class="table table-striped">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col">№</th>
-                        <th scope="col">作業内容</th>
-                        <th scope="col">順番</th>
-                        <th scope="col">操作</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">№</th>
+                    <th scope="col">作業内容</th>
+                    <th scope="col">順番</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @job_masters.any? %>
                     <% counter = 10 * (@page.to_i - 1)%>
                     <% if counter < 0 %>
                         <% counter = 0 %>
@@ -31,14 +32,14 @@
                             </td>
                         </tr>
                     <% end %>
-                    <tr>
-                        <td class="text-center"><a href=<%= new_job_master_path %> class="btn btn-outline-info btn-sm">追加</a></td>
-                        <td colspan="3"><%= will_paginate( @job_masters, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer ) %></td>
-                     
-                    </tr>
-                </tbody>
-            </table>
-            
-        <% end %>
+                <% end %>
+                <tr>
+                    <td class="text-center"><a href=<%= new_job_master_path %> class="btn btn-outline-info btn-sm">追加</a></td>
+                    <td colspan="3"><%= will_paginate( @job_masters, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer ) %></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
     </div>
 </div>

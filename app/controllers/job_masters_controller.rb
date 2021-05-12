@@ -30,6 +30,7 @@ class JobMastersController < ApplicationController
   end
 
   def index
+    #@current_user = User.first
     @job_masters = JobMaster.all.order(:order).paginate(page: params[:page], :per_page => 10)
     @page = params[:page]
   end

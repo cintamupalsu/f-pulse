@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   def show
     #@user = User.first # remark
     #current_user = User.first # remark
-    #@user = User.first # remark
+    #@current_user = User.first # remark
   end
 
   def qr_show
