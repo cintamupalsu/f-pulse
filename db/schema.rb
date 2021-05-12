@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_045406) do
+ActiveRecord::Schema.define(version: 2021_05_12_040922) do
+
+  create_table "good_masters", force: :cascade do |t|
+    t.text "content"
+    t.string "order"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order", "created_at"], name: "index_good_masters_on_order_and_created_at"
+  end
 
   create_table "job_masters", force: :cascade do |t|
     t.text "content"

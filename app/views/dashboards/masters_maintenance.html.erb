@@ -4,13 +4,27 @@
     <%= render 'layouts/sidemenu' %>
     <div class="col-3 pr-0">
         <div class="card" style="height: 20rem;">
-            <div class="card-header">
+            <div class="card-header text-center">
                 <h2>作業内容</h2>
             </div>
             <div class="card-body">
+                <%= image_tag("photos/bertani.png", alt: "news", id:"news", size: "255x300") %>
             </div>
             <div class="card-footer">
-                <a href=<%=job_masters_path %> class="btn btn-outline-primary btn-block">Enter</a>
+                <a href=<%=job_masters_path %> class="btn btn-outline-primary btn-block">実行</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 pr-0">
+        <div class="card" style="height: 20rem;">
+            <div class="card-header text-center">
+                <h2>農作物</h2>
+            </div>
+            <div class="card-body">
+                <%= image_tag("photos/hasiltani.png", alt: "news", id:"news", size: "255x300") %>
+            </div>
+            <div class="card-footer">
+                <a href=<%=good_masters_path %> class="btn btn-outline-success btn-block">実行</a>
             </div>
         </div>
     </div>
