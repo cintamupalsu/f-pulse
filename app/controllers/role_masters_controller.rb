@@ -3,7 +3,7 @@ class RoleMastersController < ApplicationController
   before_action :correct_user
   
   def index 
-    @role_masters = RoleMaster.all.order(:order).paginate(page: params[:page], :per_page => 10)
+    @role_masters = RoleMaster.all.order(:content).paginate(page: params[:page], :per_page => 10)
     @page = params[:page]
   end
 
