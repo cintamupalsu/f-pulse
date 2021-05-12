@@ -14,7 +14,7 @@ class GoodMastersController < ApplicationController
   def create
     @good_master = GoodMaster.new(good_master_params)
     if @good_master.save
-      flash[:success]= "👩🏻‍💼 "+@good_master.content+"を登録しました。"
+      flash[:success]= "👩🏻‍💼"+@good_master.content+"を登録しました。"
       redirect_to good_masters_path
     else
       render 'new'
@@ -32,7 +32,7 @@ class GoodMastersController < ApplicationController
   def update
     @good_master = GoodMaster.find(params[:id])
     if @good_master.update(good_master_params)
-      flash[:success]= "👩🏻‍💼 "+@good_master.content+"を編集しました"
+      flash[:success]= "👩🏻‍💼"+@good_master.content+"を編集しました"
       redirect_to good_masters_path
     else
       render 'edit'
@@ -41,7 +41,7 @@ class GoodMastersController < ApplicationController
 
   def destroy
     GoodMaster.find(params[:id]).destroy
-    flash[:success] = "👩🏻‍💼 農作物を削除しました。"
+    flash[:success] = "👩🏻‍💼農作物を削除しました。"
     redirect_to good_masters_path
   end
 

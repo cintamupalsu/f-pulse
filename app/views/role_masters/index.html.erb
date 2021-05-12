@@ -1,0 +1,41 @@
+<% provide(:title, "🎩Roleﾏｽﾀｰ") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10 pr-0">
+        <table class="table table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">№</th>
+                    <th scope="col">🤵🏻Role👩🏻‍🏫👩🏼‍🚒</th>
+                    <th scope="col">👁‍🗨Abrev</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if @role_masters.any? %>
+                    <% counter = 10 * (@page.to_i - 1)%>
+                    <% if counter < 0 %>
+                        <% counter = 0 %>
+                    <% end %>
+                    <% @role_masters.each do |role_master|%>
+                        <% counter = counter + 1%>
+                        <tr class="mt-0 mb-0 pt-0 pb-0">
+                            <td class="text-center"><%= counter %></td>
+                            <td><%= role_master.content %></td>
+                            <td class="text-center"><%= role_master.abrev %></td>
+                            <td class="text-center">
+                                <a href=<%= edit_role_master_path(role_master) %> class="btn btn-outline-success btn-sm">編集</a>
+                                <%= link_to "削除", role_master, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                <% end %>
+                <tr>
+                    <td class="text-center"><a href=<%= new_role_master_path %> class="btn btn-outline-info btn-sm">追加</a></td>
+                    <td colspan="3"><%= will_paginate( @role_masters, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer ) %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

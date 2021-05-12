@@ -1,0 +1,13 @@
+<%= form_with(model: @role_master, local: true) do |f|%>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :content %>
+    <%= f.text_field :content, class: 'form-control' %>
+
+    <%= f.label :abrev %>
+    <%= f.text_field :abrev, class: 'form-control' %>
+    
+    <%= f.label :description %>
+    <%= f.text_area :description, placeholder: "定義" %>
+
+    <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>

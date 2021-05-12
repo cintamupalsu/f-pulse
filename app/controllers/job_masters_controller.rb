@@ -13,7 +13,7 @@ class JobMastersController < ApplicationController
   def create
     @job_master = JobMaster.new(job_master_params)
     if @job_master.save
-      flash[:success]= "👩🏻‍💼 "+@job_master.content+"を登録しました。"
+      flash[:success]= "👩🏻‍💼"+@job_master.content+"を登録しました。"
       redirect_to job_masters_path
     else
       render 'new'
@@ -23,7 +23,7 @@ class JobMastersController < ApplicationController
   def update
     @job_master = JobMaster.find(params[:id])
     if @job_master.update(job_master_params)
-      flash[:success]= "👩🏻‍💼 作業内容を編集しました"
+      flash[:success]= "👩🏻‍💼作業内容を編集しました"
       redirect_to job_masters_path
     else
       render 'edit'
@@ -42,7 +42,7 @@ class JobMastersController < ApplicationController
 
   def destroy
     JobMaster.find(params[:id]).destroy
-    flash[:success] = "👩🏻‍💼 作業内容を削除しました。"
+    flash[:success] = "👩🏻‍💼作業内容を削除しました。"
     redirect_to job_masters_path
   end
 

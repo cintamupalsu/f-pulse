@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_040922) do
+ActiveRecord::Schema.define(version: 2021_05_12_062223) do
 
   create_table "good_masters", force: :cascade do |t|
     t.text "content"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 2021_05_12_040922) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_mujins_on_user_id"
+  end
+
+  create_table "role_masters", force: :cascade do |t|
+    t.text "content"
+    t.string "abrev"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 # Could not dump table "users" because of following StandardError

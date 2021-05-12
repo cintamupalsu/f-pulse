@@ -1,0 +1,13 @@
+<% provide(:title, '🎩Roleﾏｽﾀｰ') %>
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10">
+        <h1>新規🎩Role</h1>
+        <div class="row">
+            <div class="col-md-6">
+               <%= render 'form' %>
+               <a href=<%=role_masters_path %> class="btn btn-outline-secondary btn-block">🔙キャンセル</a>
+            </div>
+        </div>
+    </div>
+</div>
