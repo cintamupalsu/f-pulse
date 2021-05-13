@@ -1,12 +1,19 @@
 <% provide(:title, "🗂マスターメンテ") %>
 <div class="dashboard">
+<% menucount = 0 %>
 <div class="row">
     <%= render 'layouts/sidemenu' %>
     <% if current_user.admin %>
+        <% menucount +=1 %>
+        <% if menucount == 4 %>
+            </div>
+            <div class="row">
+            <% menucount = 1 %>
+        <% end %>
         <div class="col-3 pr-0">
             <div class="card" style="height: 20rem;">
                 <div class="card-header text-center">
-                    <h2>👮🏻Features🕵🏼‍♀️🥷</h2>
+                    <h2>🥷Features</h2>
                 </div>
                 <div class="card-body pt-0 pl-0">
                     <%= image_tag("photos/sbshq.png", alt: "news", id:"news", size: "270x320") %>
@@ -16,6 +23,13 @@
                 </div>
             </div>
         </div>
+    <% end %>
+    
+    <% menucount +=1 %>
+    <% if menucount == 4 %>
+        </div>
+        <div class="row">
+        <% menucount = 1 %>
     <% end %>
     <div class="col-3 pr-0">
         <div class="card" style="height: 20rem;">
@@ -30,6 +44,13 @@
             </div>
         </div>
     </div>
+
+    <% menucount +=1 %>
+    <% if menucount == 4 %>
+        </div>
+        <div class="row">
+        <% menucount = 1 %>
+    <% end %>
     <div class="col-3 pr-0">
         <div class="card" style="height: 20rem;">
             <div class="card-header text-center">
@@ -43,6 +64,13 @@
             </div>
         </div>
     </div>
+
+    <% menucount +=1 %>
+    <% if menucount == 4 %>
+        </div>
+        <div class="row">
+        <% menucount = 1 %>
+    <% end %>
     <div class="col-3 pr-0">
         <div class="card" style="height: 20rem;">
             <div class="card-header text-center">
