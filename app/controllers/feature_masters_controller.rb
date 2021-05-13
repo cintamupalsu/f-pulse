@@ -1,6 +1,6 @@
 class FeatureMastersController < ApplicationController
-  #before_action :authenticate_user! #unremark
-  #before_action :correct_user
+  before_action :authenticate_user! #unremark
+  before_action :correct_user
   
   def index 
     @feature_masters = FeatureMaster.all.order(:content).paginate(page: params[:page], :per_page => 10)

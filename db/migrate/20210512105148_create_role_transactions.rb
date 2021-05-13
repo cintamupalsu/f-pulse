@@ -6,6 +6,5 @@ class CreateRoleTransactions < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
-    add_index :role_transactions, [:role_master, :feature_master]
   end
 end
