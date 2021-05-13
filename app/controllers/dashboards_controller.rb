@@ -14,6 +14,7 @@ class DashboardsController < ApplicationController
   end
 
   def masters_maintenance
+    #@current_user = User.first # remark
   end
 
 end
