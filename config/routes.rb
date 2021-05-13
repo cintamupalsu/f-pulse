@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'feature_masters/new'
   get 'role_masters/new'
   #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -31,5 +32,9 @@ Rails.application.routes.draw do
 
   # Role routes
   resources :role_masters
+  post   '/updaterole',         to: 'role_masters#updaterole'
+
+  # Feature routes
+  resources :feature_masters
 
 end

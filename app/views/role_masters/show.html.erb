@@ -1,0 +1,53 @@
+<% provide(:title, '🎩Roleﾏｽﾀｰ') %>
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10">
+        <h1><%= @role_master.content %></h1>
+         <%= form_for(:updaterole, url: updaterole_path) do |f| %>
+            <%= f.hidden_field :role_master_id, value: @role_master.id %>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">№</th>
+                        <th class="text-center" scope="col">🤵🏻Role👩🏻‍🏫👩🏼‍🚒</th>
+                        <th scope="col">✅Check</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if @feature_masters.any? %>
+                        <% counter = 0 %>
+                        <% @feature_masters.each do |feature_master| %>
+                            <% counter += 1%>
+                            <tr class="mt-0 mb-0 pt-0 pb-0">
+                                <td class="text-center"><%= counter %></td>
+                                <td><%= feature_master.content %></td>
+                                <td class="text-center pt-0 pb-0">
+                                    <h2>
+                                    <% if feature_master.role_transactions.any? %>
+                                        <% role_transaction = RoleTransaction.where("role_master_id=? AND feature_master_id=?",@role_master.id, feature_master.id).first %>
+                                        <% if role_transaction && role_transaction.active == 1 %>
+                                            <%= f.check_box :roletransaction, :checked=> true, multiple: true %>
+                                        <% else %>
+                                            <%= f.check_box :roletransaction, multiple: true %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= f.check_box :roletransaction, multiple: true %>
+                                    <% end %>
+                                    </h2>
+                                </td>
+                            </tr>
+                        <% end %>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <%= f.submit "Update", class: "btn btn-outline-secondary" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <a href=<%=role_masters_path %> class="btn btn-outline-secondary">🔙キャンセル</a>
+        <%end%>
+    </div>
+</div>

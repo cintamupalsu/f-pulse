@@ -1,0 +1,13 @@
+<% provide(:title, 'Feature') %>
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10">
+        <h1>New Feature</h1>
+        <div class="row">
+            <div class="col-md-6">
+               <%= render 'form' %>
+               <a href=<%=feature_masters_path %> class="btn btn-outline-secondary btn-block">🔙キャンセル</a>
+            </div>
+        </div>
+    </div>
+</div>

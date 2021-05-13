@@ -1,0 +1,2 @@
+module FeatureMastersHelper
+end

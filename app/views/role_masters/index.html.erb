@@ -25,6 +25,7 @@
                             <td><%= role_master.content %></td>
                             <td class="text-center"><%= role_master.abrev %></td>
                             <td class="text-center">
+                                <%= link_to "機能", role_master, class: "btn btn-outline-warning btn-sm" %>
                                 <a href=<%= edit_role_master_path(role_master) %> class="btn btn-outline-success btn-sm">編集</a>
                                 <%= link_to "削除", role_master, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
                             </td>

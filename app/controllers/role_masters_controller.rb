@@ -21,10 +21,6 @@ class RoleMastersController < ApplicationController
     end
   end
 
-  def show
-    @role_master = RoleMaster.find(params[:id])
-  end
-
   def edit
     @role_master = RoleMaster.find(params[:id])
   end
@@ -45,14 +41,68 @@ class RoleMastersController < ApplicationController
     redirect_to role_masters_path
   end
 
+  def show
+    @role_master = RoleMaster.find(params[:id])
+    @feature_masters = FeatureMaster.all.order(:content)
+    #@current_user = User.first #remark
+  end
+  
+  def updaterole
+    #current_user = User.first #remark
+    feature_masters = FeatureMaster.all.order(:content)
+    role_master = RoleMaster.find(updaterole_params['role_master_id'])
+    roletransactions = check_box_bug(updaterole_params['roletransaction'])
+    counter = 0
+    feature_masters.each do |feature_master|
+      
+      active = false
+      if roletransactions[counter] == 1 
+        active = true
+      end
+      
+      role_transaction = RoleTransaction.where("role_master_id=? AND feature_master_id=?", role_master.id, feature_master.id).first
+      if role_transaction
+        if role_transaction.active != active 
+          role_transaction.update(active: active, user_id: current_user.id)
+        end  
+      else
+        RoleTransaction.create!(role_master_id: role_master.id, feature_master_id: feature_master.id, user_id: current_user.id, active: active)
+      end
+      counter += 1  
+    end
+    
+    flash[:success] = "Featureを編集しました"
+    redirect_to role_masters_path
+  end
+
   private
 
   def role_master_params
     params.require(:role_master).permit(:content, :abrev, :description)
   end
 
+  def updaterole_params
+    params.require(:updaterole).permit(:role_master_id, :roletransaction=>[])
+  end
+
   def correct_user
     redirect_to(root_url) unless current_user.admin?
+  end
+
+  def check_box_bug(param_checkbox)
+    count_array=0
+    result={}
+    (0..param_checkbox.count-1).each do |i|
+      if param_checkbox[i]=='1'
+        count_array -= 1
+        result[count_array]=1
+        count_array += 1
+      else
+        result[count_array]=0
+        count_array += 1
+      end
+    end
+    return result
   end
 end
 
