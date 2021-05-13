@@ -3,5 +3,5 @@ class RoleMaster < ApplicationRecord
     validates :abrev, presence: true, length: { maximum: 5 }
     validates :description, presence: true, length: { maximum: 500 }
     has_many :role_transactions
-    has_many :role_users
+    has_many :role_users, dependent: :destroy
 end
