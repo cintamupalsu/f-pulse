@@ -104,10 +104,20 @@ aside{
   }
 }
 
+.checkbox {
+  margin-top: -10px; margin-bottom: 10px; span {
+  margin-left: 20px;
+  font-weight: normal; 
+  }
+}
+  
+
 .dashboard .card .card-body{
   max-height: 200px;
   overflow: auto;
 }
+
+
 
 /* QR Code */
 #qr table{

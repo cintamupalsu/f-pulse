@@ -12,7 +12,7 @@
                 <% end %>
 
                 <% if user_signed_in? %>    
-                    <% if current_user.admin %>
+                    <% if maintenance_user() == true  %>
                         <li class="nav-item"><%= link_to "💽ﾏｽﾀﾒﾝﾃﾅﾝｽ", master_maintenance_path, class: "nav-link" %></li>
                     <% end %>
                    <li class="dropdown pt-2">

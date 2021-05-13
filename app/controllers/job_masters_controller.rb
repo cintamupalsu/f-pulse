@@ -53,8 +53,29 @@ class JobMastersController < ApplicationController
   end
 
   def correct_user
-    #current_user = User.first # remark
-    redirect_to(root_url) unless current_user.admin?
+    allowed = false
+    if current_user.admin 
+      allowed = true
+    end
+    
+    roles = current_user.role_users 
+    roles.each do |role|
+      if role.active?
+        role_master = RoleMaster.find(role.role_master_id)
+        role_master.role_transactions.each do |role_transaction|
+          if role_transaction.active?
+            feature_master = FeatureMaster.find(role_transaction.feature_master_id)
+            if feature_master.abrev == "00003"
+              allowed = true   
+            end
+          end
+        end
+      end
+    end
+
+    if allowed != true
+      redirect_to(root_url)  
+    end
   end
 
 end

@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_014555) do
+ActiveRecord::Schema.define(version: 2021_05_13_054203) do
 
-  create_table "feature_masters", force: :cascade do |t|
-    t.text "content"
-    t.string "abrev"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["content", "created_at"], name: "index_feature_masters_on_content_and_created_at"
-  end
+# Could not dump table "feature_masters" because of following StandardError
+#   Unknown type 'bool' for column 'master'
 
   create_table "good_masters", force: :cascade do |t|
     t.text "content"
@@ -67,6 +62,16 @@ ActiveRecord::Schema.define(version: 2021_05_13_014555) do
 # Could not dump table "role_transactions" because of following StandardError
 #   Unknown type '' for column 'active'
 
+  create_table "role_users", force: :cascade do |t|
+    t.integer "role_master_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_master_id"], name: "index_role_users_on_role_master_id"
+    t.index ["user_id"], name: "index_role_users_on_user_id"
+  end
+
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'bool' for column 'admin'
 
@@ -75,4 +80,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_014555) do
   add_foreign_key "role_transactions", "feature_masters"
   add_foreign_key "role_transactions", "role_masters"
   add_foreign_key "role_transactions", "users"
+  add_foreign_key "role_users", "role_masters"
+  add_foreign_key "role_users", "users"
 end

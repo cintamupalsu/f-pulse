@@ -48,10 +48,11 @@ class FeatureMastersController < ApplicationController
   private
 
   def feature_master_params
-    params.require(:feature_master).permit(:content, :abrev)
+    params.require(:feature_master).permit(:content, :abrev, :master)
   end
 
   def correct_user
     redirect_to(root_url) unless current_user.admin?
   end  
+
 end

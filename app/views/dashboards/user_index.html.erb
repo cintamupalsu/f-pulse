@@ -1,0 +1,29 @@
+<% provide(:title, "User index") %>
+<div class="dashboard">
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10 pr-0">
+        <table class="table table-warning table-striped">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">№</th>
+                    <th scope="col">名前</th>
+                    <th scope="col">メール</th>
+                    <th scope="col">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% counter = 0%>
+                <% @users.each do |user| %>
+                    <% counter+= 1%>
+                    <tr>
+                        <td class="text-center"><%= counter %></td>
+                        <td><%= user.full_name %></td>
+                        <td><%= user.email %></td>
+                        <td class="text-center"><a href=<%= user_role_path(:id => user.id) %> class="btn btn-outline-primary btn-sm">role</a></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

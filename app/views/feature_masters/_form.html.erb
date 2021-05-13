@@ -1,9 +1,16 @@
 <%= form_with(model: @feature_master, local: true) do |f|%>
     <%= render 'shared/error_messages', object: f.object %>
+    
     <%= f.label :content %>
     <%= f.text_field :content, class: 'form-control' %>
 
     <%= f.label :abrev %>
     <%= f.text_field :abrev, class: 'form-control' %>
+
+    <%= f.label :master, class: "checkbox inline" do %>        
+        <%= f.check_box :master %>
+        <span>is Master</span>
+    <% end %>
+
     <%= f.submit "登録🌻", class: "btn btn-primary" %>
 <% end %>

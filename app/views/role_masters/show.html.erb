@@ -9,7 +9,7 @@
                 <thead>
                     <tr>
                         <th class="text-center" scope="col">№</th>
-                        <th class="text-center" scope="col">🤵🏻Role👩🏻‍🏫👩🏼‍🚒</th>
+                        <th class="text-center" scope="col">🤵🏻Features👩🏻‍🏫👩🏼‍🚒</th>
                         <th scope="col">✅Check</th>
                     </tr>
                 </thead>
@@ -25,7 +25,7 @@
                                     <h2>
                                     <% if feature_master.role_transactions.any? %>
                                         <% role_transaction = RoleTransaction.where("role_master_id=? AND feature_master_id=?",@role_master.id, feature_master.id).first %>
-                                        <% if role_transaction && (role_transaction.active == 1 || role_transaction.active ) %>
+                                        <% if role_transaction && role_transaction.active?  %>
                                             <%= f.check_box :roletransaction, :checked=> true, multiple: true %>
                                         <% else %>
                                             <%= f.check_box :roletransaction, multiple: true %>

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'dashboards#show'
   get '/master_maintenance', to: 'dashboards#masters_maintenance'
+  get '/user_index', to: 'dashboards#user_index'
+  get '/user_role', to: 'dashboards#user_role'
+  post '/updateuserrole', to: 'dashboards#updateuserrole'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do

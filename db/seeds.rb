@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Create Features
 FeatureMaster.create!(content: "Role Menu", abrev: "00001")
-FeatureMaster.create!(content: "ユーザー機能", abrev: "00002")
-FeatureMaster.create!(content: "ボランティア機能", abrev: "00003")
-FeatureMaster.create!(content: "農家機能", abrev: "00004")
-FeatureMaster.create!(content: "自治体機能", abrev: "00005")
+FeatureMaster.create!(content: "ユーザーﾏｽﾀｰ", abrev: "00002")
+FeatureMaster.create!(content: "作業内容ﾏｽﾀｰ", abrev: "00003")
+FeatureMaster.create!(content: "農作物ﾏｽﾀｰ", abrev: "00004")
+FeatureMaster.create!(content: "ボランティア機能", abrev: "00005")
 
 
 
