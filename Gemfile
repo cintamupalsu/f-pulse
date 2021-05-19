@@ -37,6 +37,7 @@ gem 'bootstrap'
 # set javascript/packs/application.js to add: 
 #     require('jquery')
 #     import 'bootstrap'
+# add _jquery.html.erb for dropdown works
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'rqrcode'
