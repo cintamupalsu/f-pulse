@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_054203) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["content", "created_at"], name: "index_role_masters_on_content_and_created_at"
   end
 
 # Could not dump table "role_transactions" because of following StandardError
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_054203) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_master_id", "user_id"], name: "index_role_users_on_role_master_id_and_user_id"
     t.index ["role_master_id"], name: "index_role_users_on_role_master_id"
     t.index ["user_id"], name: "index_role_users_on_user_id"
   end
