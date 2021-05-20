@@ -6,13 +6,14 @@
         <nav>
             <ul class="nav">
                 <li class="nav-item"><%= link_to "🏠ホーム", root_path, class: "nav-link" %></li>
+            
                 <% if controller.controller_name == "mujins" %>
                     <li class="nav-item"><%= link_to "👨🏻‍🌾援農", mujin_dashboard_path, class: "nav-link" %></li>
                     <li class="nav-item"><%= link_to "🍱無人販売", mujin_dashboard_path, class: "nav-link" %></li>
                 <% end %>
 
                 <% if user_signed_in? %>    
-                    <% if maintenance_user() == true  %>
+                    <% if maintenance_user() == true || current_user.admin? %>
                         <li class="nav-item"><%= link_to "💽ﾏｽﾀﾒﾝﾃﾅﾝｽ", master_maintenance_path, class: "nav-link" %></li>
                     <% end %>
                    <li class="dropdown pt-2">
