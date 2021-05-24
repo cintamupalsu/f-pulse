@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_054203) do
+ActiveRecord::Schema.define(version: 2021_05_20_044943) do
 
 # Could not dump table "feature_masters" because of following StandardError
 #   Unknown type 'bool' for column 'master'
@@ -74,6 +74,27 @@ ActiveRecord::Schema.define(version: 2021_05_13_054203) do
     t.index ["user_id"], name: "index_role_users_on_user_id"
   end
 
+  create_table "sub_feature_masters", force: :cascade do |t|
+    t.text "content"
+    t.string "abrev"
+    t.integer "feature_master_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["feature_master_id", "abrev"], name: "index_sub_feature_masters_on_feature_master_id_and_abrev"
+    t.index ["feature_master_id"], name: "index_sub_feature_masters_on_feature_master_id"
+  end
+
+  create_table "sub_feature_users", force: :cascade do |t|
+    t.boolean "active"
+    t.integer "sub_feature_master_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sub_feature_master_id"], name: "index_sub_feature_users_on_sub_feature_master_id"
+    t.index ["user_id", "sub_feature_master_id"], name: "index_sub_feature_users_on_user_id_and_sub_feature_master_id"
+    t.index ["user_id"], name: "index_sub_feature_users_on_user_id"
+  end
+
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'bool' for column 'admin'
 
@@ -84,4 +105,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_054203) do
   add_foreign_key "role_transactions", "users"
   add_foreign_key "role_users", "role_masters"
   add_foreign_key "role_users", "users"
+  add_foreign_key "sub_feature_masters", "feature_masters"
+  add_foreign_key "sub_feature_users", "sub_feature_masters"
+  add_foreign_key "sub_feature_users", "users"
 end

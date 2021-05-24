@@ -22,8 +22,8 @@
         <%= render 'layouts/messages' %>
       <% end %>
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
-    <%= render 'layouts/footer' %>
     <div class='container'>
       <%= debug(params) if Rails.env.develompent? %>
     </div>

@@ -1,0 +1,84 @@
+<% provide(:title, "User role") %>
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10 pr-0">
+        <div class="row">
+            <div class="col-6 text-left">
+                <h4><%= @user.full_name %></h4>
+            </div>
+            <div class="col-6 text-right">
+                <h4><%= @user.email %></h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <h3><%= @role_master.content %></h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <%= form_for(:updatesubfeatureuser, url: updatesubfeatureuser_path) do |f| %>
+                    <%= f.hidden_field :user_id, value: @user.id %>
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">№</th>
+                                <th class="text-center" scope="col">Features</th>
+                                <th class="text-center" scope="col">Sub Features</th>
+                                <th class="text-center" scope="col">✅Check</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% counter = 0 %>
+                            <% @role_master.role_transactions.each do |role_transaction| %>
+                                
+                                <% if role_transaction.active? %>
+                                    <% counter += 1 %>
+                                    <% feature_master = FeatureMaster.find(role_transaction.feature_master_id) %>
+                                    
+                                    <tr>
+                                        <td class="text-center"><strong><%= counter %></strong></td>
+                                        <td colspan='2'><strong><%= feature_master.content %></strong></td>
+                                        
+                                        <td></td>                                    
+                                    </tr>
+                                    <% subcounter = 0 %>
+                                    <% feature_master.sub_feature_masters.each do |sub_feature_master| %>
+                                        <% subcounter += 1 %>
+                                       
+                                        <tr>
+                                            <td class="text-center"><%= counter %>.<%=subcounter %></td>
+                                            <td></td>
+                                            <td><%=sub_feature_master.content %></td>
+                                            <% sub_feature_user = SubFeatureUser.where("user_id = ? AND sub_feature_master_id = ?", @user.id, sub_feature_master.id).first %>
+                                            <%= f.hidden_field :sub_feature_master_ids, value: sub_feature_master.id, multiple: true %>
+                                            <% if sub_feature_user %>
+                                                <%= f.hidden_field :sub_feature_user_ids, value: sub_feature_user.id, multiple: true %>
+                                            <% else %>
+                                                <%= f.hidden_field :sub_feature_user_ids, value: -1, multiple: true %>
+                                            <% end %>
+
+                                            <% if sub_feature_user && sub_feature_user.active? %>
+                                                <td class="text-center"><%= f.check_box :subfeatureuserchecks, :checked=> true, multiple: true %></td>
+                                            <% else %>
+                                                <td class="text-center"><%= f.check_box :subfeatureuserchecks, :checked=> false, multiple: true %></td>
+                                            <% end %>
+                                        </tr>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <%= f.submit "Update", class: "btn btn-outline-secondary btn-sm" %>
+                <% end %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <a href=<%=user_role_path(:id => @user.id)%> class="btn btn-outline-secondary">🔙キャンセル</a>
+            </div>
+        </div>
+    </div>
+</div>

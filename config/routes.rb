@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get '/user_index', to: 'dashboards#user_index'
   get '/user_role', to: 'dashboards#user_role'
   post '/updateuserrole', to: 'dashboards#updateuserrole'
+  get '/user_feature_roles', to: 'dashboards#user_feature_roles'
+  post '/updatesubfeatureuser', to: 'dashboards#updatesubfeatureuser'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :user do

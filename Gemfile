@@ -31,13 +31,17 @@ gem 'devise'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap'
+
 # dont forget to set config/webpack/environment
 # then run on terminal: yarn add jquery bootstrap popper.js
 # change the layout html to stylesheet_pack_tag
 # set javascript/packs/application.js to add: 
 #     require('jquery')
 #     import 'bootstrap'
-# add _jquery.html.erb for dropdown works
+# add _jquery.html.erb for dropdown works X
+# $ yarn add bootstrap@5.0.0-beta2
+# $ yarn add @popperjs/core@2.0.0-alpha.1
+
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'rqrcode'

@@ -1,5 +1,4 @@
 <% provide(:title, "User role") %>
-<div class="dashboard">
 <div class="row">
     <%= render 'layouts/sidemenu' %>
     <div class="col-10 pr-0">
@@ -15,12 +14,13 @@
             <div class="col-12">
             <%= form_for(:updateuserrole, url: updateuserrole_path) do |f| %>
                 <%= f.hidden_field :user_id, value: @user.id %>
-                    <table class="table table-warning table-striped">
+                    <table class="table ">
                         <thead>
                             <tr>
                                 <th class="text-center" scope="col">№</th>
                                 <th class="text-center" scope="col">🤵🏻Role👩🏻‍🏫👩🏼‍🚒</th>
                                 <th class="text-center" scope="col">✅Check</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,9 +28,13 @@
                                 <% counter = 0 %>
                                 <% @role_masters.each do |role_master| %>
                                     <%= f.hidden_field :role_master_id, value: role_master.id, multiple: true %>
-                                    <% counter += 1%>
+                                    <% counter +=1 %>
+                                    
                                     <tr class="mt-0 mb-0 pt-0 pb-0">
-                                        <td class="text-center"><%= counter %></td>
+                                        <td class="text-center">
+                                           
+                                                <%= counter %>
+                                        </td>
                                         <td><%= role_master.content %></td>
                                         <td class="text-center pt-0 pb-0">
                                             <h2>
@@ -44,15 +48,17 @@
                                                 <% else %>
                                                     <%= f.check_box :roleuser, multiple: true %>
                                                 <% end %>
+                                                
                                             </h2>
                                         </td>
+                                        <td><%= link_to "Feature roles", user_feature_roles_path(:selected_user_id => @user.id, :role_master_id => role_master.id) , class: "btn btn-outline-warning btn-sm" %></td>
                                     </tr>
+            
                                 <% end %>
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                        <%= f.submit "Update", class: "btn btn-outline-secondary" %>
+                                    <td colspan='4' class="pb-0">
+                            
+                                        <%= f.submit "Update", class: "btn btn-outline-secondary btn-sm" %>
                                     </td>
                                 </tr>
                             <% end %>
