@@ -102,10 +102,9 @@ class DashboardsController < ApplicationController
     subfeatureuserchecks = check_box_bug(updatesubfeatureuser_params['subfeatureuserchecks'])
     sfmarray = 0
     sub_feature_master_ids.each do |sub_feature_master_id|
-      if sub_feature_user_ids[sfmarray] != -1 
+      if sub_feature_user_ids[sfmarray].to_i > 0 
         sub_feature_user = SubFeatureUser.find(sub_feature_user_ids[sfmarray])
         if subfeatureuserchecks[sfmarray] != sub_feature_user.active
-          
           sub_feature_user.update(active: subfeatureuserchecks[sfmarray])
         end
       else
