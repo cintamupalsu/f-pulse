@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!  #unremark
-  # before_action :correct_user, only: [:user_index, :user_role, :updateuserrole, :updatesubfeatureuser] #unremark
-  # before_action :maintenance_user, only: [:masters_maintenance, :updatesubfeatureuser]
+  before_action :correct_user, only: [:user_index, :user_role, :updateuserrole, :updatesubfeatureuser] #unremark
+  before_action :maintenance_user, only: [:masters_maintenance]
   
 
   def show
