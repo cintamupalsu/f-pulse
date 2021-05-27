@@ -18,7 +18,7 @@ class ApisController < ApplicationController
         token = params[:token]
         user = User.find_by(email: email)
         
-        if user && user.authenticated?(token)
+        if user && user.remember_digest && user.authenticated?(token)
             jsonMsg(200,"Authenticated",[1,2,3,4]) 
         else
             jsonMsg(501,"Authentication Failed",[])
