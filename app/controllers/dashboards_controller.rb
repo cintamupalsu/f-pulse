@@ -12,8 +12,11 @@ class DashboardsController < ApplicationController
 
   def qr_show
     #current_user = User.first # remark
-    content = "EIEIO"+current_user.uid.to_s+current_user.id.to_s
-    @qrcode = RQRCode::QRCode.new(content, :size => 5, :level => :h)
+    #content = "EIEIO"+current_user.uid.to_s+current_user.id.to_s
+    new_token = User.new_token
+    content = "SBS"+new_token
+    current_user.remember(new_token)
+    @qrcode = RQRCode::QRCode.new(content, :size => 4, :level => :h)
   end
 
   def masters_maintenance

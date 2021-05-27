@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_044943) do
+ActiveRecord::Schema.define(version: 2021_05_27_003735) do
 
 # Could not dump table "feature_masters" because of following StandardError
 #   Unknown type 'bool' for column 'master'
