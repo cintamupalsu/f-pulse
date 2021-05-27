@@ -42,4 +42,7 @@ Rails.application.routes.draw do
   # Feature routes
   resources :feature_masters
 
+  # API
+  get 'apis/scan' #first connection
+
 end

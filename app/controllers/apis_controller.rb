@@ -12,6 +12,18 @@ class ApisController < ApplicationController
 
     def mujin_stock
     end
+    
+    def scan
+        email = params[:email]
+        token = params[:token]
+        user = User.find_by(email: email)
+        
+        if user && user.authenticated?(token)
+            jsonMsg(200,"Authenticated",[1,2,3,4]) 
+        else
+            jsonMsg(501,"Authentication Failed",[])
+        end
+    end
 
     private
     # params
@@ -19,4 +31,10 @@ class ApisController < ApplicationController
         params.permit(:email, :apikey, :mujinitemid, :pieces)
     end
 
+    def jsonMsg(errNum, errMessage, result)
+        responseInfo = {status: errNum, developerMessage: errMessage}
+        metadata = {responseInfo: responseInfo}
+        jsonString = {metadata: metadata, result: result}
+        render json: jsonString.to_json
+    end
 end
