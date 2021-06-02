@@ -34,7 +34,7 @@ class ApisController < ApplicationController
     def jsonMsg(errNum, errMessage, results)
         responseInfo = {status: errNum, developerMessage: errMessage}
         metadata = {responseInfo: responseInfo}
-        jsonString = {metadata: metadata, result: results}
+        jsonString = {metadata: metadata, results: results}
         render json: jsonString.to_json
     end
 end
