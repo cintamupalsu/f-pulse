@@ -19,7 +19,7 @@ class ApisController < ApplicationController
         user = User.find_by(email: email)
         
         if user && user.remember_digest && user.authenticated?(token)
-            jsonMsg(200,"Authenticated",[1,2,3,4]) 
+            jsonMsg(200,"Authenticated",[user.full_name]) 
         else
             jsonMsg(501,"Authentication Failed",[])
         end
@@ -31,10 +31,10 @@ class ApisController < ApplicationController
         params.permit(:email, :apikey, :mujinitemid, :pieces)
     end
 
-    def jsonMsg(errNum, errMessage, result)
+    def jsonMsg(errNum, errMessage, results)
         responseInfo = {status: errNum, developerMessage: errMessage}
         metadata = {responseInfo: responseInfo}
-        jsonString = {metadata: metadata, result: result}
+        jsonString = {metadata: metadata, result: results}
         render json: jsonString.to_json
     end
 end
