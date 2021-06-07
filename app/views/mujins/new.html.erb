@@ -1,0 +1,13 @@
+<% provide(:title, '無人') %>
+<div class="row">
+    <%= render 'layouts/sidemenu' %>
+    <div class="col-10">
+        <h1>新規無人</h1>
+        <div class="row">
+            <div class="col-md-6">
+               <%= render 'form' %>
+               <a href=<%=mujins_path %> class="btn btn-outline-secondary btn-block">🔙キャンセル</a>
+            </div>
+        </div>
+    </div>
+</div>

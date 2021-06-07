@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get '/mujin_dashboard',  to: 'mujins#show'
   get '/mujin_management', to: 'mujins#management'
   get '/mujin_map',        to: 'mujins#map'
+  #get '/mujin_new',        to: 'mujins#new'
+  resources :mujins
  
 
   # Farm volunteer routes
