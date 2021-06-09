@@ -3,11 +3,12 @@
     <%= render 'layouts/sidemenu' %>
     <div class="col-9 pr-0">
         <table class="table table-sm table-hover">
-            <thead class="table-success">
+            <thead class="table-success text-center">
                 <th scope="col">№</th>
                 <th scope="col">無人名🏷</th>
                 <th scope="col">地図</th>
-                <th scope="col">在庫</th>
+                <th scope="col">内容</th>
+                <th scope="col">操作</th>
             </thead>
             <tbody>
                 <% counter = 0 %>
@@ -16,47 +17,25 @@
                     <tr>
                         <td><%= counter%></td>
                         <td>
-                            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#<%=mujin.name%><%=mujin.id%>">
-                                <%= mujin.name%>
-                            </button>
+                            <%= link_to mujin.name, mujin_path(:id => mujin.id) %>
                         </td>
-                        <td>地図</td>
-                        <td>2</td>
+                        <td class="text-center">地図</td>
+                        <td class="text-center"><%= mujin.mujin_items.count%>個</td>
+                        <td class="text-center">
+                            <a href=<%= edit_mujin_path(mujin) %> class="btn btn-outline-success btn-sm">編集</a>
+                            <%= link_to "削除", mujin, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
+                        </td>
                     </tr>
-                    <div class="modal fade" id="<%=mujin.name%><%=mujin.id%>" tabindex="-1" role="dialog" aria-labelledby="mujinModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel"><%= mujin.name %></h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="container-fluid">
-                                        <div class="row border-bottom">
-                                            <div class="col-1">№</div>
-                                            <div class="col-5 text-center">売り物</div>
-                                            <div class="col-3 text-center">値段</div>
-                                            <div class="col-3 text-center">個</div>
-                                        </div>
-                                        <div class="row">
-                                            <% counter2 = 0%>
-                                            <% mujin.mujin_items.each do |item| %>
-                                                <% counter2 += 1%>
-                                                    <div class="col-1"><%=counter2%></div>
-                                                    <div class="col-5 text-left"><%= item.name %></div>
-                                                    <div class="col-3 text-right"><%= item.price %></div>
-                                                    <div class="col-3 text-right"><%= item.stock %></div>
-                                            <% end %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 <% end %>
+                <tr>
+                    <td class="text-center"><a href=<%= new_mujin_path %> class="btn btn-outline-info btn-sm">追加</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
         </table>
+        <a href=<%=farm_management_path %> class="btn btn-outline-secondary btn-block">🔙農業</a>
     </div>
 </div>

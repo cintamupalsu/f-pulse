@@ -1,0 +1,2 @@
+module MujinItemsHelper
+end

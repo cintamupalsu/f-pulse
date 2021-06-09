@@ -8,12 +8,16 @@
                 <li class="nav-item"><%= link_to "🏠ホーム", root_path, class: "nav-link" %></li>
             
                 <% if controller.controller_name == "mujins" %>
-                    <li class="nav-item"><%= link_to "👨🏻‍🌾援農", mujin_dashboard_path, class: "nav-link" %></li>
-                    <li class="nav-item"><%= link_to "🍱無人販売", mujin_dashboard_path, class: "nav-link" %></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="<%= farm_management_path %>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            🌽農業
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">👩🏻‍🌾 援農ﾎﾞﾗﾝﾃｨｱ、ｱﾙﾊﾞｲﾄ</a></li>
+                            <li><a class="dropdown-item" href="<%= mujins_path %>">ｺﾐｭﾆﾃｨ冷蔵庫、無人販売</a></li>
+                        </ul>
+                    </li>
                 <% end %>
-
-               
-
                 <% if user_signed_in? %>    
                     <% if maintenance_user() == true || current_user.admin? %>
                         <li class="nav-item"><%= link_to "💽ﾏｽﾀﾒﾝﾃﾅﾝｽ", master_maintenance_path, class: "nav-link" %></li>
@@ -24,7 +28,7 @@
                             <%=current_user.full_name%>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">プロファイル</a></li>
+                            <li><a class="dropdown-item" href="#">🤵🏻 ﾌﾟﾛﾌｧｲﾙ</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><%= link_to "⎋ Sign Out", destroy_user_session_path, class: "dropdown-item" %></li>
                             

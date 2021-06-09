@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'mujin_items/new'
   get 'feature_masters/new'
   get 'role_masters/new'
   #devise_for :users
@@ -22,11 +23,12 @@ Rails.application.routes.draw do
   get 'showqrcode', to: 'dashboards#qr_show'
 
   # Mujin routes
-  get '/mujin_dashboard',  to: 'mujins#show'
-  get '/mujin_management', to: 'mujins#management'
+  #get '/mujin_dashboard',  to: 'mujins#show'
+  get '/farm_management', to: 'mujins#mgmt'
   get '/mujin_map',        to: 'mujins#map'
   #get '/mujin_new',        to: 'mujins#new'
   resources :mujins
+  resources :mujin_items
  
 
   # Farm volunteer routes

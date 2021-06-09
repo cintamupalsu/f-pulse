@@ -1,0 +1,14 @@
+<%= form_with(model: @mujin_item, local: true) do |f|%>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+
+    <%= f.label :stock %>
+    <%= f.text_field :stock, class: 'form-control' %>
+    <%= f.label :price %>
+    <%= f.text_field :price, class: 'form-control' %>
+
+    <%= f.hidden_field :mujin_id, value: @mujin.id %>
+
+    <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>
