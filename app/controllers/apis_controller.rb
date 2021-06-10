@@ -25,6 +25,19 @@ class ApisController < ApplicationController
         end
     end
 
+    def mujin_points
+        email = params[:email]
+        token = params[:token]
+        if token_authentication(email, token)
+            mujins = Mujin.all
+            jsonMsg(200,"Mujin Data", mujins)
+        else 
+            jsonMsg(501,"Authentication Failed",[])
+        end
+    end
+
+ 
+
     private
     # params
     def mujintransaction_params
@@ -36,5 +49,13 @@ class ApisController < ApplicationController
         metadata = {responseInfo: responseInfo}
         jsonString = {metadata: metadata, results: results}
         render json: jsonString.to_json
+    end
+
+    def token_authentication(email, token)
+        user = User.find_by(email: email)
+        if user && user.remember_digest && user.authenticated?(token)
+            return true
+        end
+        return false
     end
 end
