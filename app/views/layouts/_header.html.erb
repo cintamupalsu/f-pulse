@@ -5,16 +5,15 @@
         </a>
         <nav>
             <ul class="nav">
-                <li class="nav-item"><%= link_to "🏠ホーム", root_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "🏠Home", root_path, class: "nav-link" %></li>
             
                 <% if controller.controller_name == "mujins" %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="<%= farm_management_path %>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            🌽農業
+                            🌽Zero Hunger
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">👩🏻‍🌾 援農ﾎﾞﾗﾝﾃｨｱ</a></li>
-                            <li><a class="dropdown-item" href="<%= mujins_path %>">ｺﾐｭﾆﾃｨ冷蔵庫、無人販売</a></li>
+                            <li><a class="dropdown-item" href="<%= mujins_path %>">Community Fridge</a></li>
                         </ul>
                     </li>
                 <% end %>
