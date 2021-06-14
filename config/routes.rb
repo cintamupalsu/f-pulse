@@ -50,4 +50,5 @@ Rails.application.routes.draw do
   # API
   get 'apis/scan' #first connection
   get 'apis/mujin_points' #retrieve mujin points
+  post 'apis/create_mujin' #create mujin
 end

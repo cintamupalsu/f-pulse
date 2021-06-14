@@ -38,6 +38,22 @@ class ApisController < ApplicationController
         end
     end
 
+    def create_mujin
+        email = params[:email]
+        token = params[:token]
+        name = params[:name]
+        content = params[:content]
+        lat = params[:lat]
+        lon = params[:lon]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            Mujin.create(name: name, lat: lat.to_f, lon: lon.to_f, user_id: user.id, content: content)
+            jsonMsg(201,"Mujin Created",[])
+        else
+            jsonMsg(501,"Authentication Failed",[])
+        end
+    end
+
  
 
     private

@@ -58,7 +58,7 @@ class MujinsController < ApplicationController
     private 
     
     def mujin_params
-        params.require(:mujin).permit(:name, :lat, :lon, :user_id)
+        params.require(:mujin).permit(:name, :lat, :lon, :user_id, :content)
     end
 
 end
