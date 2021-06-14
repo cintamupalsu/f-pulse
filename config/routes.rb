@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'mujin_items/new'
-  get 'feature_masters/new'
-  get 'role_masters/new'
+  #get 'mujin_items/new'
+  #get 'feature_masters/new'
+  #get 'role_masters/new'
   #devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #root to: 'dashboards#show'
@@ -49,5 +49,5 @@ Rails.application.routes.draw do
 
   # API
   get 'apis/scan' #first connection
-
+  get 'apis/mujin_points' #retrieve mujin points
 end
