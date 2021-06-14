@@ -38,6 +38,19 @@ class ApisController < ApplicationController
         end
     end
 
+    def user_mujins
+        email = params[:email]
+        token = params[:token]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            mujins = user.mujins
+            jsonString = {mujins: mujins}
+            render json: jsonString.to_json
+        else 
+            jsonMsg(501,"Authentication Failed",[])
+        end
+    end
+
     def create_mujin
         email = params[:email]
         token = params[:token]
