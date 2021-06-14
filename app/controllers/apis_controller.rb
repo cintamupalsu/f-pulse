@@ -30,7 +30,9 @@ class ApisController < ApplicationController
         token = params[:token]
         if token_authentication(email, token)
             mujins = Mujin.all
-            jsonMsg(200,"Mujin Data", mujins)
+            jsonString = {mujins: mujins}
+            render json: jsonString.to_json
+            #jsonMsg(200,"Mujin Data", mujins)
         else 
             jsonMsg(501,"Authentication Failed",[])
         end
