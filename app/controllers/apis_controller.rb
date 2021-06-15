@@ -73,7 +73,36 @@ class ApisController < ApplicationController
         if token_authentication(email, token)
             user = User.find_by(email: email)
             mujins = user.mujins
-            jsonString = {mujins: mujins}
+
+            jsonMujins = []
+            counter = 0
+            mujins.each do |mujin|
+                jsonMujin = {}
+                jsonMujin["id"] = mujin.id
+                jsonMujin["name"] = mujin.name
+                jsonMujin["lat"] = mujin.lat
+                jsonMujin["lon"] = mujin.lon
+                jsonMujin["user_id"] = mujin.user_id
+                jsonMujin["content"] = mujin.content
+                
+                jsonMujinItems = []
+                subcounter = 0
+                mujin.mujin_items.each do | mujin_item |
+                    jsonMujinItem = {}
+                    jsonMujinItem["id"] = mujin_item.id
+                    jsonMujinItem["name"] = mujin_item.name
+                    jsonMujinItem["stock"] = mujin_item.stock
+                    jsonMujinItem["price"] = mujin_item.price
+                    jsonMujinItems[subcounter] = jsonMujinItem
+                    subcounter += 1
+                end
+                jsonMujin["mujin_items"] = jsonMujinItems
+
+                jsonMujins[counter] = jsonMujin
+                counter += 1
+            end
+            
+            jsonString = {mujins: jsonMujins}
             render json: jsonString.to_json
         else 
             jsonMsg(501,"Authentication Failed",[])
