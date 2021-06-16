@@ -157,7 +157,41 @@ class ApisController < ApplicationController
         end
     end
 
- 
+    def edit_mujin
+        email = params[:email]
+        token = params[:token]
+        name = params[:name]
+        content = params[:content]
+        lat = params[:lat]
+        lon = params[:lon]
+        mujin_id = params[:mujin_id]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            mujin = Mujin.find(mujin_id)
+            if mujin.user_id == user.id 
+                mujin.update(name: name, content: content, lat: lat, lon: lon)
+            end
+            jsonMsg(200,"Mujin updated",[user.full_name]) 
+        else
+            jsonMsg(500,"Authentication failed",[]) 
+        end
+    end
+
+    def delete_mujin
+        email = params[:email]
+        token = params[:token]
+        mujin_id = params[:mujin_id]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            mujin = Mujin.find(mujin_id)
+            if user.id == mujin.user_id
+                mujin.destroy
+            end
+            jsonMsg(200,"Mujin deleted",[user.full_name])
+        else
+            jsonMsg(500,"Authentication failed",[])
+        end
+    end
 
     private
     # params
