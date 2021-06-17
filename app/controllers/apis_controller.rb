@@ -120,7 +120,7 @@ class ApisController < ApplicationController
             user = User.find_by(email: email)
             Mujin.create(name: name, lat: lat.to_f, lon: lon.to_f, user_id: user.id, content: content)
             
-            mujins = user.mujins
+            mujins = user.mujins.order(:created_at)
             jsonMujins = []
             counter = 0
             mujins.each do |mujin|
