@@ -197,19 +197,83 @@ class ApisController < ApplicationController
         email = params[:email]
         token = params[:token]
         name = params[:name]
-        stock = params[:stock]
-        price = params[:price]
-        mujin_id = params[:mujin_id]
+        stock = params[:stock].to_f
+        price = params[:price].to_f
+        mujin_id = params[:mujin_id].to_i
         if token_authentication(email, token)
             user = User.find_by(email: email)
-            MujinItem.create(name: name, stock: stock.to_f, price: price.to_f, mujin_id: mujin_id)
+            #mujin = Mujin.find(mujin_id)
+            #mujin.mujin_items.create(name: name, stock: stock, price: price)
+            MujinItem.create(name: name, stock: stock, price: price, mujin_id: mujin_id)
+            mujins = user.mujins.order(:created_at)
+            jsonMujins = []
+            counter = 0
+            mujins.each do |mujin|
+                jsonMujin = {}
+                jsonMujin["id"] = mujin.id
+                jsonMujin["name"] = mujin.name
+                jsonMujin["lat"] = mujin.lat
+                jsonMujin["lon"] = mujin.lon
+                jsonMujin["user_id"] = mujin.user_id
+                jsonMujin["content"] = mujin.content
+                
+                jsonMujinItems = []
+                subcounter = 0
+                mujin.mujin_items.each do | mujin_item |
+                    jsonMujinItem = {}
+                    jsonMujinItem["id"] = mujin_item.id
+                    jsonMujinItem["name"] = mujin_item.name
+                    jsonMujinItem["stock"] = mujin_item.stock
+                    jsonMujinItem["price"] = mujin_item.price
+                    jsonMujinItems[subcounter] = jsonMujinItem
+                    subcounter += 1
+                end
+                jsonMujin["mujin_items"] = jsonMujinItems
+                jsonMujins[counter] = jsonMujin
+                counter += 1
+            end
+            jsonString = {mujins: jsonMujins}
+            render json: jsonString.to_json
+        else 
+            jsonMsg(501,"Authentication Failed",[])
         end
     end
 
     def edit_mujin_item
+        email = params[:email]
+        token = params[:token]
+        name = params[:name]
+        stock = params[:stock]
+        price = params[:price]
+        mujin_item_id = params[:mujin_item_id]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            mujin_item = MujinItem.find(mujin_item_id)
+            mujin = Mujin.find(mujin_item.mujin_id)
+            if mujin.user_id == user.id 
+                mujin_item.update(name: name, stock: stock, price: price)
+            end
+            jsonMsg(200,"Mujin item updated",[user.full_name]) 
+        else
+            jsonMsg(500,"Authentication failed",[]) 
+        end
     end
 
     def delete_mujin_item
+        email = params[:email]
+        token = params[:token]
+        mujin_item_id = params[:mujin_item_id]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            mujin_item = MujinItem.find(mujin_item_id)
+            mujin = Mujin.find(mujin_item.mujin_id)
+            if user.id == mujin.user_id
+                mujin_item.destroy
+            end
+            jsonMsg(200,"Mujin item deleted",[user.full_name])
+        else
+            jsonMsg(500,"Authentication failed",[])
+        end
     end
 
     private

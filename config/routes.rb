@@ -52,8 +52,12 @@ Rails.application.routes.draw do
   # API Mujin
   get 'apis/mujin_points' #retrieve mujin points
   get 'apis/user_mujins' #retrueve user mujins
-  get 'apis/create_mujin' #create mujin
+  #get 'apis/create_mujin' #create mujin
   post 'apis/create_mujin' #create mujin
   post 'apis/edit_mujin' # edit mujin
   get 'apis/delete_mujin' # delete mujin
+  #get 'apis/create_mujin_item' # create mujin item
+  post 'apis/create_mujin_item' #create mujin item
+  post 'apis/edit_mujin_item' # update mujin item
+  get 'apis/delete_mujin_item' # delete mujin item
 end
