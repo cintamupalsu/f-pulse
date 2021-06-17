@@ -194,6 +194,16 @@ class ApisController < ApplicationController
     end
 
     def create_mujin_item
+        email = params[:email]
+        token = params[:token]
+        name = params[:name]
+        stock = params[:stock]
+        price = params[:price]
+        mujin_id = params[:mujin_id]
+        if token_authentication(email, token)
+            user = User.find_by(email: email)
+            MujinItem.create(name: name, stock: stock.to_f, price: price.to_f, mujin_id: mujin_id)
+        end
     end
 
     def edit_mujin_item
