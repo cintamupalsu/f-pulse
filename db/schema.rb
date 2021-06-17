@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_14_060858) do
+ActiveRecord::Schema.define(version: 2021_06_17_025844) do
 
 # Could not dump table "feature_masters" because of following StandardError
 #   Unknown type 'bool' for column 'master'
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2021_06_14_060858) do
     t.integer "mujin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"user_id\", \"created_at\"", name: "index_mujin_items_on_user_id_and_created_at"
     t.index ["mujin_id"], name: "index_mujin_items_on_mujin_id"
   end
 

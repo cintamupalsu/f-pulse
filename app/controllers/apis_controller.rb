@@ -193,6 +193,15 @@ class ApisController < ApplicationController
         end
     end
 
+    def create_mujin_item
+    end
+
+    def edit_mujin_item
+    end
+
+    def delete_mujin_item
+    end
+
     private
     # params
     def mujintransaction_params
