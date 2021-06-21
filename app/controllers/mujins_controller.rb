@@ -24,9 +24,24 @@ class MujinsController < ApplicationController
 
     def create
         @mujin = Mujin.new(mujin_params)
+        @mujin.image.attach(params[:mujin][:image])
+        
+        #sample = open(params[:mujin][:image]) { |f| f.read }
+        #@sample64 = Base64.strict_encode64(sample)
+        data = params[:mujin][:image]
+        File.open(data, 'rb') do |img|
+            @sample64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
+            #@sample64 = Base64.strict_encode64(img.read)
+        end
+        img_from_base64 = Base64.decode64(@sample64)
+        #img_from_base64[0,8]
+    
+        @sampleImage = img_from_base64
+
         if @mujin.save
           flash[:success]= "👩🏻‍💼"+@mujin.name+"を登録しました。"
           redirect_to mujins_path
+          #render 'imagetest'
         else
           render 'new'
         end
@@ -58,7 +73,7 @@ class MujinsController < ApplicationController
     private 
     
     def mujin_params
-        params.require(:mujin).permit(:name, :lat, :lon, :user_id, :content)
+        params.require(:mujin).permit(:name, :lat, :lon, :user_id, :content, :image)
     end
 
 end

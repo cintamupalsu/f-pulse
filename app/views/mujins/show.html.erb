@@ -1,41 +1,55 @@
 <% provide(:title, "無人販売営業") %>
 <div class="row">
     <%= render 'layouts/sidemenu' %>
-    <div class="col-9 pr-0">
-        <h2>無人名: <%= @mujin.name %></h2>
-        <table class="table table-sm table-hover">
-            <thead class="table-success text-center">
-                <th scope="col">№</th>
-                <th scope="col">項目🏷</th>
-                <th scope="col">個</th>
-                <th scope="col">金額</th>
-                <th scope="col">操作</th>
-            </thead>
-            <tbody>
-                <% counter = 0 %>
-                <% @mujin.mujin_items.each do |mujin_item| %>
-                    <% counter += 1 %>
-                    <tr class="mt-0 mb-0 pt-0 pb-0">
-                        <td class="text-center"><%= counter %></td>
-                        <td><%= mujin_item.name %></td>
-                        <td class="text-right"><%= mujin_item.stock %></td>
-                        <td class="text-right"><%= mujin_item.price %></td>
-                        <td class="text-center">
-                            <a href=<%= edit_mujin_item_path(mujin_item) %> class="btn btn-outline-success btn-sm">編集</a>
-                            <%= link_to "削除", mujin_item, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
-                        </td>
-                    </tr>
-                <% end %>
-                <tr>
-                    <td class="text-center"><a href=<%= new_mujin_item_path(:id => @mujin.id) %> class="btn btn-outline-info btn-sm">追加</a></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-        <a href=<%=mujins_path %> class="btn btn-outline-secondary btn-block">🔙一蘭</a>
+    <div class="col-10 pr-0">
+        <div class="row">
+            <div class="col-12">
+                <h2>無人名: <%= @mujin.name %></h2>
+                <table class="table table-sm table-hover">
+                    <thead class="table-success text-center">
+                        <th scope="col">№</th>
+                        <th scope="col">項目🏷</th>
+                        <th scope="col">個</th>
+                        <th scope="col">金額</th>
+                        <th scope="col">操作</th>
+                    </thead>
+                    <tbody>
+                        <% counter = 0 %>
+                        <% @mujin.mujin_items.each do |mujin_item| %>
+                            <% counter += 1 %>
+                            <tr class="mt-0 mb-0 pt-0 pb-0">
+                                <td class="text-center"><%= counter %></td>
+                                <td><%= mujin_item.name %></td>
+                                <td class="text-right"><%= mujin_item.stock %></td>
+                                <td class="text-right"><%= mujin_item.price %></td>
+                                <td class="text-center">
+                                    <a href=<%= edit_mujin_item_path(mujin_item) %> class="btn btn-outline-success btn-sm">編集</a>
+                                    <%= link_to "削除", mujin_item, method: :delete, data: {confirm: "削除したいですか？"}, class: "btn btn-outline-danger btn-sm" %>
+                                </td>
+                            </tr>
+                        <% end %>
+                        <tr>
+                            <td class="text-center"><a href=<%= new_mujin_item_path(:id => @mujin.id) %> class="btn btn-outline-info btn-sm">追加</a></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 text-center">
+                <span>
+                    <%= image_tag @mujin.image, size: "500x500" if @mujin.image.attached?  %>
+                </span>
+            </div>
+            <div class="col-2">
+                <a href=<%=mujins_path %> class="btn btn-outline-secondary btn-block">🔙一蘭</a>
+            </div>
+        </div>
     </div>
 </div>
 
