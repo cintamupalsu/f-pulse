@@ -41,7 +41,11 @@ class ApisController < ApplicationController
                 jsonMujin["lon"] = mujin.lon
                 jsonMujin["user_id"] = mujin.user_id
                 jsonMujin["content"] = mujin.content
-                
+                if mujin.image64 == nil 
+                    #jsonMujin["image64"] = ""
+                else
+                    #jsonMujin["image64"] = mujin.image64
+                end
                 jsonMujinItems = []
                 subcounter = 0
                 mujin.mujin_items.each do | mujin_item |

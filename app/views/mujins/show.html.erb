@@ -43,7 +43,11 @@
         <div class="row">
             <div class="col-10 text-center">
                 <span>
-                    <%= image_tag @mujin.image, size: "500x500" if @mujin.image.attached?  %>
+                    <% if @mujin.image64 != nil %>
+                        <img src=<%=@mujin.image64%> />
+                    <% else %>
+                        <%= image_tag @mujin.image, size: "500x500" if @mujin.image.attached?  %>
+                    <% end %>
                 </span>
             </div>
             <div class="col-2">
