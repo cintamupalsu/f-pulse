@@ -55,6 +55,12 @@ class MujinsController < ApplicationController
 
     def update
         @mujin = Mujin.find(params[:id])
+
+        data = params[:mujin][:image]
+        File.open(data, 'rb') do |img|
+            @mujin.image64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
+        end
+        
         if @mujin.update(mujin_params)
           flash[:success]= @mujin.name + "を編集しました"
           redirect_to mujins_path
