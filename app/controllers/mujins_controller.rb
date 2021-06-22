@@ -33,11 +33,12 @@ class MujinsController < ApplicationController
         #data = @mujin.display_image
         File.open(data, 'rb') do |img|
             #@sample64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
-            @sample64 = Base64.encode64(img.read)
+            @sample64 = Base64.strict_encode64(img.read)
+            #@sample64 = Base64.encode64(img.read)
             #@sample64 = Base64.strict_encode64(img.read)
         end
-        img_from_base64 = Base64.decode64(@sample64)
-        @sampleImage = img_from_base64
+        #img_from_base64 = Base64.decode64(@sample64)
+        #@sampleImage = img_from_base64
         # end of convert experiment
         @mujin.image64 = @sample64
         

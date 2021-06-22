@@ -44,7 +44,8 @@
             <div class="col-10 text-center">
                 <span>
                     <% if @mujin.image64 != nil %>
-                        <img src=<%=@mujin.image64%> />
+                        <% image = 'data:image/jpg;base64,'+ @mujin.image64 %>
+                        <img src=<%=image %> />
                     <% else %>
                         <%= image_tag @mujin.image, size: "500x500" if @mujin.image.attached?  %>
                     <% end %>

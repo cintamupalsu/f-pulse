@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   post 'apis/edit_mujin' # edit mujin
   get 'apis/delete_mujin' # delete mujin
   get 'apis/get_mujin_image' # get last mujin image
+  post 'apis/update_mujin_image' # update last mujin image
   #get 'apis/create_mujin_item' # create mujin item
   post 'apis/create_mujin_item' #create mujin item
   post 'apis/edit_mujin_item' # update mujin item

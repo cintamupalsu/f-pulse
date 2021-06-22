@@ -213,6 +213,17 @@ class ApisController < ApplicationController
         end
     end
 
+    def update_mujin_image
+        email = params[:email]
+        token = params[:token]
+        if token_authentication(email, token)
+            mujin = Mujin.find(params[:mujin_id])
+            mujin.update(image64: params[:image64])
+        else 
+            jsonMsg(501,"Authentication Failed",[])
+        end
+    end
+
     def create_mujin_item
         email = params[:email]
         token = params[:token]
