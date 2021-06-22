@@ -30,6 +30,7 @@ class MujinsController < ApplicationController
         #sample = open(params[:mujin][:image]) { |f| f.read }
         #@sample64 = Base64.strict_encode64(sample)
         data = params[:mujin][:image]
+        #data = @mujin.display_image
         File.open(data, 'rb') do |img|
             @sample64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
             #@sample64 = Base64.strict_encode64(img.read)
@@ -41,8 +42,8 @@ class MujinsController < ApplicationController
         
         if @mujin.save
           flash[:success]= "👩🏻‍💼"+@mujin.name+"を登録しました。"
-          redirect_to mujins_path
-          #render 'imagetest'
+          #redirect_to mujins_path
+          render 'imagetest'
         else
           render 'new'
         end

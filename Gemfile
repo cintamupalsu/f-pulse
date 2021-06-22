@@ -32,6 +32,9 @@ gem 'devise'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap'
+# from book for image
+gem 'image_processing', '1.9.3'
+gem 'mini_magick', '4.9.5'
 
 # dont forget to set config/webpack/environment
 # then run on terminal: yarn add jquery bootstrap popper.js
