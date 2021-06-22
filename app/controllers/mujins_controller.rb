@@ -32,7 +32,8 @@ class MujinsController < ApplicationController
         data = params[:mujin][:image]
         #data = @mujin.display_image
         File.open(data, 'rb') do |img|
-            @sample64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
+            #@sample64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
+            @sample64 = Base64.encode64(img.read)
             #@sample64 = Base64.strict_encode64(img.read)
         end
         img_from_base64 = Base64.decode64(@sample64)
@@ -60,7 +61,7 @@ class MujinsController < ApplicationController
         File.open(data, 'rb') do |img|
             @mujin.image64 = 'data:image/jpg;base64,' + Base64.strict_encode64(img.read)
         end
-        
+
         if @mujin.update(mujin_params)
           flash[:success]= @mujin.name + "を編集しました"
           redirect_to mujins_path
