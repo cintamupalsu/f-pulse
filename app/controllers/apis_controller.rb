@@ -222,7 +222,21 @@ class ApisController < ApplicationController
             #debugger
             #mujin.image.attach(image64)
             #@mujin = mujin
+            
             mujin.update(image64: image64)
+            ##image = StringIO.new(Base64.decode64(params[:image64].tr(' ', '+')))
+            
+            ##image.class.class_eval { attr_accessor :original_filename, :content_type }
+            ##image.original_filename = SecureRandom.hex + '.jpg'
+            ##image.content_type = 'image/jpg'
+            #if image != nil
+            #    File.open(image, 'rb') do |img|
+            #        @sample64 = Base64.strict_encode64(img.read)
+            #    end
+            #end #of convert experiment
+            ##send_data( image, :disposition => 'attachment', :type => 'image/jpg', :filename => image.original_filename)
+            #mujin.image.attach(image)
+            #mujin.save!
             jsonMsg(200,"Mujin image updated",[]) 
             #render 'mujins/imagetest'
         else 
