@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '14.4'
+
+target 'Mujin' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Mujin
+  pod 'ZXingObjC'
+
+  target 'MujinTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MujinUITests' do
+    # Pods for testing
+  end
+
+end

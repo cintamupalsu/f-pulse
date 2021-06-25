@@ -1,0 +1,6 @@
+framework module Pods_MujinTests {
+  umbrella header "Pods-MujinTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
